@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qdv-zV-LXn">
+                                <rect key="frame" x="326" y="248" width="80" height="400"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T9F-NG-ofR">
+                                        <rect key="frame" x="0.0" y="8" width="80" height="30"/>
+                                        <state key="normal" title="切换摄像头"/>
+                                        <connections>
+                                            <action selector="swapCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QlU-w6-AM4"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u4g-q4-tCz">
+                                        <rect key="frame" x="0.0" y="70" width="80" height="30"/>
+                                        <state key="normal" title="改变分辨率"/>
+                                        <connections>
+                                            <action selector="changeVideoDimension:" destination="BYZ-38-t0r" eventType="touchUpInside" id="z0Q-On-48L"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KQq-48-dsU">
+                                        <rect key="frame" x="0.0" y="132" width="80" height="30"/>
+                                        <state key="normal" title="设置镜像"/>
+                                        <connections>
+                                            <action selector="setVideoMirrored:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OfZ-hQ-Oja"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="u4g-q4-tCz" firstAttribute="leading" secondItem="qdv-zV-LXn" secondAttribute="leading" id="59q-nx-sXs"/>
+                                    <constraint firstItem="KQq-48-dsU" firstAttribute="leading" secondItem="qdv-zV-LXn" secondAttribute="leading" id="ChU-QQ-aAK"/>
+                                    <constraint firstItem="T9F-NG-ofR" firstAttribute="top" secondItem="qdv-zV-LXn" secondAttribute="top" constant="8" id="DMz-Or-iaA"/>
+                                    <constraint firstAttribute="width" constant="80" id="K4P-CA-Z8F"/>
+                                    <constraint firstItem="u4g-q4-tCz" firstAttribute="top" secondItem="T9F-NG-ofR" secondAttribute="bottom" constant="32" id="Qu8-rz-8aB"/>
+                                    <constraint firstAttribute="trailing" secondItem="T9F-NG-ofR" secondAttribute="trailing" id="SAV-91-IMR"/>
+                                    <constraint firstAttribute="height" constant="400" id="VEW-lE-mpU"/>
+                                    <constraint firstItem="KQq-48-dsU" firstAttribute="top" secondItem="u4g-q4-tCz" secondAttribute="bottom" constant="32" id="aC9-ZJ-yEQ"/>
+                                    <constraint firstItem="T9F-NG-ofR" firstAttribute="leading" secondItem="qdv-zV-LXn" secondAttribute="leading" id="g0J-a8-UzG"/>
+                                    <constraint firstAttribute="trailing" secondItem="u4g-q4-tCz" secondAttribute="trailing" id="g4W-gF-thR"/>
+                                    <constraint firstAttribute="trailing" secondItem="KQq-48-dsU" secondAttribute="trailing" id="tUU-9f-iWG"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qdv-zV-LXn" secondAttribute="trailing" constant="8" id="2g9-Da-SVH"/>
+                            <constraint firstItem="qdv-zV-LXn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6uU-e7-Khh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="131.8840579710145" y="112.5"/>
+        </scene>
+    </scenes>
+</document>

@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "ZFVideoRecorder.h"
-#import "ZFVideoView.h"
 #import "ZFPreviewView.h"
 
 @interface ViewController ()<ZFVideoRecorderDelegate>
@@ -22,7 +21,12 @@
 @implementation ViewController
 - (IBAction)swapCamera:(UIButton *)sender {
     [sender setSelected:!sender.isSelected];
-    [self.videoRecorder swapFrontAndBackCameras];
+    if (sender.isSelected) {
+        [_videoRecorder startRecord];
+    }else {
+        [_videoRecorder stopRecord];
+    }
+//    [self.videoRecorder swapFrontAndBackCameras];
 }
 - (IBAction)changeVideoDimension:(UIButton *)sender {
     [sender setSelected:!sender.isSelected];
@@ -57,6 +61,7 @@
     
     [self.videoRecorder startRecord];
     [self.videoRecorder setVideoOrientation:AVCaptureVideoOrientationPortrait];
+    [self.videoRecorder swapFrontAndBackCameras];
 }
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];

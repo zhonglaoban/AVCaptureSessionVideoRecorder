@@ -7,6 +7,7 @@
 //
 
 #import "ZFVideoRecorder.h"
+#import <UIKit/UIKit.h>
 
 @interface ZFVideoRecorder()<AVCaptureVideoDataOutputSampleBufferDelegate>
 
@@ -36,9 +37,14 @@
         dispatch_async(_queue, ^{
             [self configureSession];
         });
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectAndSetOrientation) name:UIDeviceOrientationDidChangeNotification object:nil];
     }
     
     return self;
+}
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 // Call this on the session queue.
 - (void)configureSession
@@ -117,6 +123,18 @@
         }
     }
     return videoConnection;
+}
+- (void)detectAndSetOrientation  {
+    UIInterfaceOrientation statusBarOrientation = UIApplication.sharedApplication.statusBarOrientation;
+    AVCaptureVideoOrientation captureOrientation = AVCaptureVideoOrientationPortrait;
+    if (statusBarOrientation == UIInterfaceOrientationLandscapeLeft) {
+        captureOrientation = AVCaptureVideoOrientationLandscapeRight;
+    }else if (statusBarOrientation == UIInterfaceOrientationLandscapeRight) {
+        captureOrientation = AVCaptureVideoOrientationLandscapeLeft;
+    }else {
+        captureOrientation = AVCaptureVideoOrientationPortrait;
+    }
+    [self setVideoOrientation:captureOrientation];
 }
 #pragma mark - public functions
 //切换前后摄像头

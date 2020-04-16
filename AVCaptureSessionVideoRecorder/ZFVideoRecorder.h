@@ -17,6 +17,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 ///获取到视频数据
 - (void)videoRecorder:(ZFVideoRecorder *)videoRecorder didRecoredVideoData:(CMSampleBufferRef)sampleBuffer;
+///获取到视频数据
+- (void)didReceivedVideoData:(ZFVideoRecorder *)videoRecorder data:(void *)data width:(int)width height:(int) height;
 
 @end
 

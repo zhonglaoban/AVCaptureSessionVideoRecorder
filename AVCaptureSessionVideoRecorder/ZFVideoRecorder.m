@@ -8,6 +8,7 @@
 
 #import "ZFVideoRecorder.h"
 #import <UIKit/UIKit.h>
+#include "libyuv/libyuv.h"
 
 @interface ZFVideoRecorder()<AVCaptureVideoDataOutputSampleBufferDelegate>
 
@@ -37,6 +38,8 @@
         dispatch_async(_queue, ^{
             [self configureSession];
         });
+        [self setVideoOutputFormatType];
+        [self setVideoFrameDuration];
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectAndSetOrientation) name:UIDeviceOrientationDidChangeNotification object:nil];
     }
     
@@ -305,13 +308,40 @@
 #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
 
 - (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
-    //切换线程访问，需要先retain，再release确保sampleBuffer不被系统回收。
-    CFRetain(sampleBuffer);
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if ([self.delegate respondsToSelector:@selector(videoRecorder:didRecoredVideoData:)]) {
-            [self.delegate videoRecorder:self didRecoredVideoData:sampleBuffer];
-        }
-        CFRelease(sampleBuffer);
-    });
+    [self sampleBufferToYUV:sampleBuffer];
+}
+- (void)sampleBufferToYUV:(CMSampleBufferRef)sampleBuffer
+{
+    CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
+    
+    CVPixelBufferLockBaseAddress(pixelBuffer, 0);
+    
+    int pixelWidth = (int)CVPixelBufferGetWidth(pixelBuffer);
+    int pixelHeight = (int)CVPixelBufferGetHeight(pixelBuffer);
+    int yuv_size = pixelHeight * pixelWidth * 1.5;
+    int uv_size = pixelHeight * pixelWidth * 0.5;
+    
+    int stride_y = (int)CVPixelBufferGetBytesPerRowOfPlane(pixelBuffer, 0);
+    int stride_uv = (int)CVPixelBufferGetBytesPerRowOfPlane(pixelBuffer, 1);
+    
+    uint8_t *base_y = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 0);
+    uint8_t *base_uv = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 1);
+    
+    uint8_t *dest_y = malloc(yuv_size);
+    uint8_t *dest_u = dest_y + pixelWidth * pixelHeight;
+    uint8_t *dest_v = dest_u + pixelWidth * pixelHeight / 4;
+    
+    int result = NV12ToI420(base_y, stride_y, base_uv, stride_uv, dest_y, pixelWidth, dest_u, pixelWidth/2, dest_v, pixelWidth/2, pixelWidth, pixelHeight);
+    
+    CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
+    
+    //回调数据
+    [self processYUVData:dest_y width:pixelWidth height:pixelHeight];
+    free(dest_y);
+}
+- (void)processYUVData:(void *)data width:(int)width height:(int)height {
+    if ([self.delegate respondsToSelector:@selector(didReceivedVideoData:data:width:height:)]) {
+        [self.delegate didReceivedVideoData:self data:data width:width height:height];
+    }
 }
 @end

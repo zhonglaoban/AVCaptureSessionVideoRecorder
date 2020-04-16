@@ -9,16 +9,19 @@
 #import "ViewController.h"
 #import "ZFVideoRecorder.h"
 #import "ZFPreviewView.h"
+#import "ZFOpenGLView.h"
 
 @interface ViewController ()<ZFVideoRecorderDelegate>
 
 @property (nonatomic, strong) ZFVideoRecorder *videoRecorder;
-@property (nonatomic, strong) ZFPreviewView *preview;
+@property (nonatomic, strong) IBOutlet ZFPreviewView *preview;
+@property (nonatomic, strong) IBOutlet ZFOpenGLView *openglView;
 
 @end
 
 
 @implementation ViewController
+
 - (IBAction)swapCamera:(UIButton *)sender {
     [sender setSelected:!sender.isSelected];
     if (sender.isSelected) {
@@ -26,7 +29,7 @@
     }else {
         [_videoRecorder stopRecord];
     }
-//    [self.videoRecorder swapFrontAndBackCameras];
+    [self.videoRecorder swapFrontAndBackCameras];
 }
 - (IBAction)changeVideoDimension:(UIButton *)sender {
     [sender setSelected:!sender.isSelected];
@@ -55,17 +58,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    _preview = [[ZFPreviewView alloc] init];
     _preview.videoPreviewLayer.session = self.videoRecorder.session;
-    [self.view insertSubview:_preview atIndex:0];
     
     [self.videoRecorder startRecord];
     [self.videoRecorder setVideoOrientation:AVCaptureVideoOrientationPortrait];
     [self.videoRecorder swapFrontAndBackCameras];
-}
-- (void)viewDidLayoutSubviews {
-    [super viewDidLayoutSubviews];
-    _preview.frame = self.view.bounds;
 }
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     UITouch *touch = [touches anyObject];
@@ -83,5 +80,8 @@
 }
 - (void)videoRecorder:(ZFVideoRecorder *)videoRecorder didRecoredVideoData:(CMSampleBufferRef)sampleBuffer {
     
+}
+- (void)didReceivedVideoData:(ZFVideoRecorder *)videoRecorder data:(void *)data width:(int)width height:(int)height {
+    [_openglView displayYUV420Data:data width:width height:height];
 }
 @end

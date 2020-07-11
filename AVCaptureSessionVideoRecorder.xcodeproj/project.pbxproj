@@ -8,6 +8,64 @@
 
 /* Begin PBXBuildFile section */
 		452B0160237E4C84000FCE44 /* ZFPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 452B015F237E4C84000FCE44 /* ZFPreviewView.m */; };
+		454312E8244B429300C9CFD8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 454312E7244B429300C9CFD8 /* AppDelegate.m */; };
+		454312EB244B429300C9CFD8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 454312EA244B429300C9CFD8 /* ViewController.m */; };
+		454312ED244B429400C9CFD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 454312EC244B429400C9CFD8 /* Assets.xcassets */; };
+		454312F0244B429400C9CFD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 454312EE244B429400C9CFD8 /* Main.storyboard */; };
+		454312F3244B429400C9CFD8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 454312F2244B429400C9CFD8 /* main.m */; };
+		454312FB244B43F400C9CFD8 /* video.fs in Resources */ = {isa = PBXBuildFile; fileRef = 45D6625824474F6D00443672 /* video.fs */; };
+		454312FC244B43F400C9CFD8 /* video.vs in Resources */ = {isa = PBXBuildFile; fileRef = 45D6626124474F6D00443672 /* video.vs */; };
+		454312FF244B4B8400C9CFD8 /* ZFVideoRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F150692374505E00933E6A /* ZFVideoRecorder.m */; };
+		45431307244B4C0600C9CFD8 /* libyuv.h in Headers */ = {isa = PBXBuildFile; fileRef = 45431306244B4C0600C9CFD8 /* libyuv.h */; };
+		45431352244B4C4000C9CFD8 /* compare_mmi.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F44B24497CEA00525ADD /* compare_mmi.cc */; };
+		45431353244B4C4000C9CFD8 /* rotate_common.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F44C24497CEA00525ADD /* rotate_common.cc */; };
+		45431354244B4C4000C9CFD8 /* rotate_any.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F44D24497CEA00525ADD /* rotate_any.cc */; };
+		45431355244B4C4000C9CFD8 /* rotate.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F44E24497CEA00525ADD /* rotate.cc */; };
+		45431356244B4C4000C9CFD8 /* row_mmi.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F45024497CEA00525ADD /* row_mmi.cc */; };
+		45431357244B4C4000C9CFD8 /* scale_gcc.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F45124497CEA00525ADD /* scale_gcc.cc */; };
+		45431358244B4C4000C9CFD8 /* convert_jpeg.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F45424497CEA00525ADD /* convert_jpeg.cc */; };
+		45431359244B4C4000C9CFD8 /* compare_win.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F45624497CEA00525ADD /* compare_win.cc */; };
+		4543135A244B4C4000C9CFD8 /* cpu_id.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F45824497CEA00525ADD /* cpu_id.cc */; };
+		4543135B244B4C4000C9CFD8 /* row_win.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F45924497CEA00525ADD /* row_win.cc */; };
+		4543135C244B4C4000C9CFD8 /* mjpeg_decoder.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F45A24497CEA00525ADD /* mjpeg_decoder.cc */; };
+		4543135D244B4C4000C9CFD8 /* row_neon.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F45C24497CEA00525ADD /* row_neon.cc */; };
+		4543135E244B4C4000C9CFD8 /* rotate_neon64.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F45E24497CEA00525ADD /* rotate_neon64.cc */; };
+		4543135F244B4C4000C9CFD8 /* scale.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F45F24497CEA00525ADD /* scale.cc */; };
+		45431360244B4C4000C9CFD8 /* compare.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F46024497CEA00525ADD /* compare.cc */; };
+		45431361244B4C4000C9CFD8 /* row_neon64.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F46124497CEA00525ADD /* row_neon64.cc */; };
+		45431362244B4C4000C9CFD8 /* convert_from_argb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F46224497CEA00525ADD /* convert_from_argb.cc */; };
+		45431363244B4C4000C9CFD8 /* compare_msa.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F46524497CEA00525ADD /* compare_msa.cc */; };
+		45431364244B4C4000C9CFD8 /* planar_functions.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F46624497CEA00525ADD /* planar_functions.cc */; };
+		45431365244B4C4000C9CFD8 /* row_msa.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F46724497CEA00525ADD /* row_msa.cc */; };
+		45431366244B4C4000C9CFD8 /* convert_argb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F46824497CEA00525ADD /* convert_argb.cc */; };
+		45431367244B4C4000C9CFD8 /* row_common.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F46924497CEA00525ADD /* row_common.cc */; };
+		45431368244B4C4000C9CFD8 /* scale_any.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F46A24497CEA00525ADD /* scale_any.cc */; };
+		45431369244B4C4000C9CFD8 /* rotate_gcc.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F46B24497CEA00525ADD /* rotate_gcc.cc */; };
+		4543136A244B4C4000C9CFD8 /* convert.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F46C24497CEA00525ADD /* convert.cc */; };
+		4543136B244B4C4000C9CFD8 /* convert_from.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F46D24497CEA00525ADD /* convert_from.cc */; };
+		4543136C244B4C4000C9CFD8 /* scale_common.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F46E24497CEA00525ADD /* scale_common.cc */; };
+		4543136D244B4C4000C9CFD8 /* rotate_mmi.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F47124497CEA00525ADD /* rotate_mmi.cc */; };
+		4543136E244B4C4000C9CFD8 /* row_any.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F47324497CEA00525ADD /* row_any.cc */; };
+		4543136F244B4C4000C9CFD8 /* convert_to_argb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F47524497CEA00525ADD /* convert_to_argb.cc */; };
+		45431370244B4C4000C9CFD8 /* compare_neon.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F47724497CEA00525ADD /* compare_neon.cc */; };
+		45431371244B4C4000C9CFD8 /* rotate_win.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F47824497CEA00525ADD /* rotate_win.cc */; };
+		45431372244B4C4000C9CFD8 /* scale_msa.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F47A24497CEA00525ADD /* scale_msa.cc */; };
+		45431373244B4C4000C9CFD8 /* scale_neon64.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F47B24497CEA00525ADD /* scale_neon64.cc */; };
+		45431374244B4C4000C9CFD8 /* mjpeg_validate.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F47D24497CEA00525ADD /* mjpeg_validate.cc */; };
+		45431375244B4C4000C9CFD8 /* scale_win.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F47F24497CEA00525ADD /* scale_win.cc */; };
+		45431376244B4C4000C9CFD8 /* compare_common.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F48024497CEA00525ADD /* compare_common.cc */; };
+		45431377244B4C4000C9CFD8 /* rotate_msa.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F48124497CEA00525ADD /* rotate_msa.cc */; };
+		45431378244B4C4000C9CFD8 /* scale_neon.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F48224497CEA00525ADD /* scale_neon.cc */; };
+		45431379244B4C4000C9CFD8 /* rotate_neon.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F48424497CEA00525ADD /* rotate_neon.cc */; };
+		4543137A244B4C4000C9CFD8 /* video_common.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F48524497CEA00525ADD /* video_common.cc */; };
+		4543137B244B4C4000C9CFD8 /* scale_mmi.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F48624497CEA00525ADD /* scale_mmi.cc */; };
+		4543137C244B4C4000C9CFD8 /* convert_to_i420.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F48824497CEA00525ADD /* convert_to_i420.cc */; };
+		4543137D244B4C4000C9CFD8 /* row_gcc.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F48924497CEA00525ADD /* row_gcc.cc */; };
+		4543137E244B4C4000C9CFD8 /* rotate_argb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F48A24497CEA00525ADD /* rotate_argb.cc */; };
+		4543137F244B4C4000C9CFD8 /* compare_gcc.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F48B24497CEA00525ADD /* compare_gcc.cc */; };
+		45431380244B4C4000C9CFD8 /* compare_neon64.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F48C24497CEA00525ADD /* compare_neon64.cc */; };
+		45431381244B4C4000C9CFD8 /* scale_argb.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F48D24497CEA00525ADD /* scale_argb.cc */; };
+		45431383244B4C6A00C9CFD8 /* liblibyuv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 45431304244B4C0600C9CFD8 /* liblibyuv.dylib */; };
 		4559F49024497CEA00525ADD /* compare_mmi.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F44B24497CEA00525ADD /* compare_mmi.cc */; };
 		4559F49124497CEA00525ADD /* rotate_common.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F44C24497CEA00525ADD /* rotate_common.cc */; };
 		4559F49224497CEA00525ADD /* rotate_any.cc in Sources */ = {isa = PBXBuildFile; fileRef = 4559F44D24497CEA00525ADD /* rotate_any.cc */; };
@@ -72,6 +130,20 @@
 /* Begin PBXFileReference section */
 		452B015E237E4C84000FCE44 /* ZFPreviewView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZFPreviewView.h; sourceTree = "<group>"; };
 		452B015F237E4C84000FCE44 /* ZFPreviewView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZFPreviewView.m; sourceTree = "<group>"; };
+		454312C7244B415E00C9CFD8 /* AVCaptureSessionVideoRecorder copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "AVCaptureSessionVideoRecorder copy-Info.plist"; path = "/Users/zhongfan/Desktop/iOS/AVCaptureSessionVideoRecorder/AVCaptureSessionVideoRecorder copy-Info.plist"; sourceTree = "<absolute>"; };
+		454312E4244B429300C9CFD8 /* macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = macOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		454312E6244B429300C9CFD8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		454312E7244B429300C9CFD8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		454312E9244B429300C9CFD8 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		454312EA244B429300C9CFD8 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		454312EC244B429400C9CFD8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		454312EF244B429400C9CFD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		454312F1244B429400C9CFD8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		454312F2244B429400C9CFD8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		454312F4244B429400C9CFD8 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		45431304244B4C0600C9CFD8 /* liblibyuv.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = liblibyuv.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		45431306244B4C0600C9CFD8 /* libyuv.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = libyuv.h; sourceTree = "<group>"; };
+		45431308244B4C0600C9CFD8 /* libyuv.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = libyuv.m; sourceTree = "<group>"; };
 		4559F44B24497CEA00525ADD /* compare_mmi.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = compare_mmi.cc; sourceTree = "<group>"; };
 		4559F44C24497CEA00525ADD /* rotate_common.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rotate_common.cc; sourceTree = "<group>"; };
 		4559F44D24497CEA00525ADD /* rotate_any.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = rotate_any.cc; sourceTree = "<group>"; };
@@ -162,6 +234,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		454312E1244B429300C9CFD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45431383244B4C6A00C9CFD8 /* liblibyuv.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45431302244B4C0600C9CFD8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		45B1478F236AECBF0043C54F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -172,6 +259,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		454312E5244B429300C9CFD8 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				454312E6244B429300C9CFD8 /* AppDelegate.h */,
+				454312E7244B429300C9CFD8 /* AppDelegate.m */,
+				454312E9244B429300C9CFD8 /* ViewController.h */,
+				454312EA244B429300C9CFD8 /* ViewController.m */,
+				454312EC244B429400C9CFD8 /* Assets.xcassets */,
+				454312EE244B429400C9CFD8 /* Main.storyboard */,
+				454312F1244B429400C9CFD8 /* Info.plist */,
+				454312F2244B429400C9CFD8 /* main.m */,
+				454312F4244B429400C9CFD8 /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		454312FE244B44C700C9CFD8 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				4559F44A24497CEA00525ADD /* libyuv */,
+			);
+			path = Vendor;
+			sourceTree = "<group>";
+		};
+		45431305244B4C0600C9CFD8 /* libyuv */ = {
+			isa = PBXGroup;
+			children = (
+				45431306244B4C0600C9CFD8 /* libyuv.h */,
+				45431308244B4C0600C9CFD8 /* libyuv.m */,
+			);
+			path = libyuv;
+			sourceTree = "<group>";
+		};
+		45431382244B4C6A00C9CFD8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		4559F44A24497CEA00525ADD /* libyuv */ = {
 			isa = PBXGroup;
 			children = (
@@ -251,8 +378,13 @@
 		45B14789236AECBF0043C54F = {
 			isa = PBXGroup;
 			children = (
+				454312FE244B44C700C9CFD8 /* Vendor */,
 				45B14794236AECBF0043C54F /* AVCaptureSessionVideoRecorder */,
+				454312E5244B429300C9CFD8 /* macOS */,
+				45431305244B4C0600C9CFD8 /* libyuv */,
 				45B14793236AECBF0043C54F /* Products */,
+				454312C7244B415E00C9CFD8 /* AVCaptureSessionVideoRecorder copy-Info.plist */,
+				45431382244B4C6A00C9CFD8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -260,6 +392,8 @@
 			isa = PBXGroup;
 			children = (
 				45B14792236AECBF0043C54F /* AVCaptureSessionVideoRecorder.app */,
+				454312E4244B429300C9CFD8 /* macOS.app */,
+				45431304244B4C0600C9CFD8 /* liblibyuv.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -267,7 +401,6 @@
 		45B14794236AECBF0043C54F /* AVCaptureSessionVideoRecorder */ = {
 			isa = PBXGroup;
 			children = (
-				4559F44A24497CEA00525ADD /* libyuv */,
 				45D6625724474F6D00443672 /* OpenGL */,
 				45B14795236AECBF0043C54F /* AppDelegate.h */,
 				45B14796236AECBF0043C54F /* AppDelegate.m */,
@@ -301,7 +434,52 @@
 		};
 /* End PBXGroup section */
 
+/* Begin PBXHeadersBuildPhase section */
+		45431300244B4C0600C9CFD8 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45431307244B4C0600C9CFD8 /* libyuv.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
 /* Begin PBXNativeTarget section */
+		454312E3244B429300C9CFD8 /* macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 454312F5244B429400C9CFD8 /* Build configuration list for PBXNativeTarget "macOS" */;
+			buildPhases = (
+				454312E0244B429300C9CFD8 /* Sources */,
+				454312E1244B429300C9CFD8 /* Frameworks */,
+				454312E2244B429300C9CFD8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = macOS;
+			productName = macOS;
+			productReference = 454312E4244B429300C9CFD8 /* macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		45431303244B4C0600C9CFD8 /* libyuv */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4543130A244B4C0600C9CFD8 /* Build configuration list for PBXNativeTarget "libyuv" */;
+			buildPhases = (
+				45431300244B4C0600C9CFD8 /* Headers */,
+				45431301244B4C0600C9CFD8 /* Sources */,
+				45431302244B4C0600C9CFD8 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = libyuv;
+			productName = libyuv;
+			productReference = 45431304244B4C0600C9CFD8 /* liblibyuv.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
 		45B14791236AECBF0043C54F /* AVCaptureSessionVideoRecorder */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 45B147AB236AECC00043C54F /* Build configuration list for PBXNativeTarget "AVCaptureSessionVideoRecorder" */;
@@ -328,6 +506,12 @@
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = "钟凡";
 				TargetAttributes = {
+					454312E3244B429300C9CFD8 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					45431303244B4C0600C9CFD8 = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
 					45B14791236AECBF0043C54F = {
 						CreatedOnToolsVersion = 11.1;
 					};
@@ -347,11 +531,24 @@
 			projectRoot = "";
 			targets = (
 				45B14791236AECBF0043C54F /* AVCaptureSessionVideoRecorder */,
+				454312E3244B429300C9CFD8 /* macOS */,
+				45431303244B4C0600C9CFD8 /* libyuv */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		454312E2244B429300C9CFD8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				454312ED244B429400C9CFD8 /* Assets.xcassets in Resources */,
+				454312F0244B429400C9CFD8 /* Main.storyboard in Resources */,
+				454312FC244B43F400C9CFD8 /* video.vs in Resources */,
+				454312FB244B43F400C9CFD8 /* video.fs in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		45B14790236AECBF0043C54F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -367,6 +564,72 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		454312E0244B429300C9CFD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				454312EB244B429300C9CFD8 /* ViewController.m in Sources */,
+				454312FF244B4B8400C9CFD8 /* ZFVideoRecorder.m in Sources */,
+				454312F3244B429400C9CFD8 /* main.m in Sources */,
+				454312E8244B429300C9CFD8 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		45431301244B4C0600C9CFD8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				45431352244B4C4000C9CFD8 /* compare_mmi.cc in Sources */,
+				45431353244B4C4000C9CFD8 /* rotate_common.cc in Sources */,
+				45431354244B4C4000C9CFD8 /* rotate_any.cc in Sources */,
+				45431355244B4C4000C9CFD8 /* rotate.cc in Sources */,
+				45431356244B4C4000C9CFD8 /* row_mmi.cc in Sources */,
+				45431357244B4C4000C9CFD8 /* scale_gcc.cc in Sources */,
+				45431358244B4C4000C9CFD8 /* convert_jpeg.cc in Sources */,
+				45431359244B4C4000C9CFD8 /* compare_win.cc in Sources */,
+				4543135A244B4C4000C9CFD8 /* cpu_id.cc in Sources */,
+				4543135B244B4C4000C9CFD8 /* row_win.cc in Sources */,
+				4543135C244B4C4000C9CFD8 /* mjpeg_decoder.cc in Sources */,
+				4543135D244B4C4000C9CFD8 /* row_neon.cc in Sources */,
+				4543135E244B4C4000C9CFD8 /* rotate_neon64.cc in Sources */,
+				4543135F244B4C4000C9CFD8 /* scale.cc in Sources */,
+				45431360244B4C4000C9CFD8 /* compare.cc in Sources */,
+				45431361244B4C4000C9CFD8 /* row_neon64.cc in Sources */,
+				45431362244B4C4000C9CFD8 /* convert_from_argb.cc in Sources */,
+				45431363244B4C4000C9CFD8 /* compare_msa.cc in Sources */,
+				45431364244B4C4000C9CFD8 /* planar_functions.cc in Sources */,
+				45431365244B4C4000C9CFD8 /* row_msa.cc in Sources */,
+				45431366244B4C4000C9CFD8 /* convert_argb.cc in Sources */,
+				45431367244B4C4000C9CFD8 /* row_common.cc in Sources */,
+				45431368244B4C4000C9CFD8 /* scale_any.cc in Sources */,
+				45431369244B4C4000C9CFD8 /* rotate_gcc.cc in Sources */,
+				4543136A244B4C4000C9CFD8 /* convert.cc in Sources */,
+				4543136B244B4C4000C9CFD8 /* convert_from.cc in Sources */,
+				4543136C244B4C4000C9CFD8 /* scale_common.cc in Sources */,
+				4543136D244B4C4000C9CFD8 /* rotate_mmi.cc in Sources */,
+				4543136E244B4C4000C9CFD8 /* row_any.cc in Sources */,
+				4543136F244B4C4000C9CFD8 /* convert_to_argb.cc in Sources */,
+				45431370244B4C4000C9CFD8 /* compare_neon.cc in Sources */,
+				45431371244B4C4000C9CFD8 /* rotate_win.cc in Sources */,
+				45431372244B4C4000C9CFD8 /* scale_msa.cc in Sources */,
+				45431373244B4C4000C9CFD8 /* scale_neon64.cc in Sources */,
+				45431374244B4C4000C9CFD8 /* mjpeg_validate.cc in Sources */,
+				45431375244B4C4000C9CFD8 /* scale_win.cc in Sources */,
+				45431376244B4C4000C9CFD8 /* compare_common.cc in Sources */,
+				45431377244B4C4000C9CFD8 /* rotate_msa.cc in Sources */,
+				45431378244B4C4000C9CFD8 /* scale_neon.cc in Sources */,
+				45431379244B4C4000C9CFD8 /* rotate_neon.cc in Sources */,
+				4543137A244B4C4000C9CFD8 /* video_common.cc in Sources */,
+				4543137B244B4C4000C9CFD8 /* scale_mmi.cc in Sources */,
+				4543137C244B4C4000C9CFD8 /* convert_to_i420.cc in Sources */,
+				4543137D244B4C4000C9CFD8 /* row_gcc.cc in Sources */,
+				4543137E244B4C4000C9CFD8 /* rotate_argb.cc in Sources */,
+				4543137F244B4C4000C9CFD8 /* compare_gcc.cc in Sources */,
+				45431380244B4C4000C9CFD8 /* compare_neon64.cc in Sources */,
+				45431381244B4C4000C9CFD8 /* scale_argb.cc in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		45B1478E236AECBF0043C54F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -432,6 +695,14 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		454312EE244B429400C9CFD8 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				454312EF244B429400C9CFD8 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
 		45B1479E236AECBF0043C54F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -451,6 +722,82 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		454312F6244B429400C9CFD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 356ESZ72J9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Vendor\"";
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = zf.macOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		454312F7244B429400C9CFD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 356ESZ72J9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Vendor\"";
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = zf.macOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		4543130B244B4C0600C9CFD8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 356ESZ72J9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Vendor\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		4543130C244B4C0600C9CFD8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 356ESZ72J9;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				EXECUTABLE_PREFIX = lib;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Vendor\"";
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		45B147A9236AECC00043C54F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -567,7 +914,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VB8MVMJBU4;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/AVCaptureSessionVideoRecorder\"";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Vendor\"";
 				INFOPLIST_FILE = AVCaptureSessionVideoRecorder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -576,6 +923,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = zf.AVCaptureSessionVideoRecorder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -586,7 +934,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VB8MVMJBU4;
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/AVCaptureSessionVideoRecorder\"";
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Vendor\"";
 				INFOPLIST_FILE = AVCaptureSessionVideoRecorder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -595,6 +943,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = zf.AVCaptureSessionVideoRecorder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -602,6 +951,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		454312F5244B429400C9CFD8 /* Build configuration list for PBXNativeTarget "macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				454312F6244B429400C9CFD8 /* Debug */,
+				454312F7244B429400C9CFD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4543130A244B4C0600C9CFD8 /* Build configuration list for PBXNativeTarget "libyuv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4543130B244B4C0600C9CFD8 /* Debug */,
+				4543130C244B4C0600C9CFD8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		45B1478D236AECBF0043C54F /* Build configuration list for PBXProject "AVCaptureSessionVideoRecorder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

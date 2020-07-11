@@ -8,8 +8,21 @@
 
 #import "ZFPreviewView.h"
 
+@interface ZFPreviewView()
+@property(nonatomic,strong)AVSampleBufferDisplayLayer*displayLayer;
+@end
+
 @implementation ZFPreviewView
 
+-(instancetype)initWithFrame:(CGRect)frame
+{
+    if (self = [super initWithFrame:frame]) {
+        self.displayLayer = [AVSampleBufferDisplayLayer layer];
+        self.displayLayer.videoGravity = AVLayerVideoGravityResizeAspectFill;
+        [self.layer addSublayer:self.displayLayer];
+    }
+    return self;
+}
 + (Class)layerClass {
     return [AVCaptureVideoPreviewLayer class];
 }
@@ -18,6 +31,7 @@
 }
 - (void)layoutSubviews {
     [super layoutSubviews];
+    self.displayLayer.frame = self.bounds;
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
     switch (orientation) {
         case UIInterfaceOrientationUnknown:
@@ -35,5 +49,12 @@
             [self.videoPreviewLayer.connection setVideoOrientation:AVCaptureVideoOrientationLandscapeRight];
             break;
     }
+}
+- (void)displaySampleBuffer:(CMSampleBufferRef)sampleBuffer {
+    if (self.displayLayer.status == AVQueuedSampleBufferRenderingStatusFailed) {
+        [self.displayLayer flush];
+    }
+    
+    [self.displayLayer enqueueSampleBuffer:sampleBuffer];
 }
 @end

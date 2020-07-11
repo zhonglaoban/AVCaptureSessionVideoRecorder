@@ -57,19 +57,17 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nhx-6H-4QY" customClass="ZFOpenGLView">
-                                <rect key="frame" x="0.0" y="542" width="180" height="320"/>
+                                <rect key="frame" x="0.0" y="662" width="326" height="200"/>
                                 <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="320" id="98s-cn-L9s"/>
-                                    <constraint firstAttribute="width" constant="180" id="qQo-yb-DRZ"/>
+                                    <constraint firstAttribute="height" constant="200" id="98s-cn-L9s"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mVc-kd-kkk" customClass="ZFPreviewView">
-                                <rect key="frame" x="234" y="542" width="180" height="320"/>
+                                <rect key="frame" x="0.0" y="462" width="326" height="200"/>
                                 <color key="backgroundColor" systemColor="systemFillColor" red="0.47058823529999999" green="0.47058823529999999" blue="0.50196078430000002" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="rP7-tC-gEt"/>
-                                    <constraint firstAttribute="height" constant="320" id="sFA-JY-R6y"/>
+                                    <constraint firstAttribute="height" constant="200" id="3nu-tT-24X"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -78,9 +76,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="qdv-zV-LXn" secondAttribute="trailing" constant="8" id="2g9-Da-SVH"/>
                             <constraint firstItem="qdv-zV-LXn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="6uU-e7-Khh"/>
                             <constraint firstItem="nhx-6H-4QY" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="7RC-J0-t9b"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="mVc-kd-kkk" secondAttribute="bottom" id="Dpd-yM-jbx"/>
+                            <constraint firstItem="mVc-kd-kkk" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Dc3-QN-e1I"/>
                             <constraint firstItem="nhx-6H-4QY" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OpR-F3-vVS"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mVc-kd-kkk" secondAttribute="trailing" id="WIM-G4-YGZ"/>
+                            <constraint firstItem="nhx-6H-4QY" firstAttribute="top" secondItem="mVc-kd-kkk" secondAttribute="bottom" id="PLf-Gm-uyz"/>
+                            <constraint firstItem="qdv-zV-LXn" firstAttribute="leading" secondItem="mVc-kd-kkk" secondAttribute="trailing" id="vsq-Yu-ye6"/>
+                            <constraint firstItem="qdv-zV-LXn" firstAttribute="leading" secondItem="nhx-6H-4QY" secondAttribute="trailing" id="xQx-2Q-a0I"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

@@ -7,10 +7,9 @@
 //
 
 #import "ZFVideoRecorder.h"
-#import <UIKit/UIKit.h>
 #include "libyuv/libyuv.h"
 
-@interface ZFVideoRecorder()<AVCaptureVideoDataOutputSampleBufferDelegate>
+@interface ZFVideoRecorder () <AVCaptureVideoDataOutputSampleBufferDelegate>
 
 //@property (nonatomic, strong) AVCaptureSession *session;
 @property (nonatomic, strong) AVCaptureConnection *videoConnection;
@@ -23,7 +22,6 @@
 @property (nonatomic) dispatch_queue_t queue;
 
 @end
-
 
 @implementation ZFVideoRecorder
 
@@ -40,9 +38,9 @@
         });
         [self setVideoOutputFormatType];
         [self setVideoFrameDuration];
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectAndSetOrientation) name:UIDeviceOrientationDidChangeNotification object:nil];
+//        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(detectAndSetOrientation) name:UIDeviceOrientationDidChangeNotification object:nil];
     }
-    
+
     return self;
 }
 - (void)dealloc
@@ -56,11 +54,11 @@
     //输入设备
     AVCaptureDevice *captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     AVCaptureDeviceInput *videoInput = [AVCaptureDeviceInput deviceInputWithDevice:captureDevice error:&error];
-    
+
     //数据输出
     AVCaptureVideoDataOutput *videoOutput = [[AVCaptureVideoDataOutput alloc] init];
     [videoOutput setSampleBufferDelegate:self queue:_queue];
-    
+
     if (error) {
         NSLog(@"Error getting video input device: %@", error.description);
         return;
@@ -77,67 +75,76 @@
         self.videoOutput = videoOutput;
     }
     [self.session commitConfiguration];
-    
+
     //获取videoConnection
     self.videoConnection = [self getVideoConnection];
 }
-- (void)startRecord {
+- (void)startRecord
+{
     [self checkVideoAuthorization:^(int code, NSString *message) {
         NSLog(@"checkVideoAuthorization code: %d, message: %@", code, message);
     }];
     dispatch_async(_queue, ^{
         [self.session startRunning];
+        AVCaptureDevice *captureDevice = self.videoInput.device;
+        NSArray *formats = captureDevice.formats;
+        NSError *error;
+        [captureDevice lockForConfiguration:&error];
+        [captureDevice setActiveFormat:formats.firstObject];
+        [captureDevice unlockForConfiguration];
     });
 }
-- (void)stopRecord {
+- (void)stopRecord
+{
     dispatch_async(_queue, ^{
         [self.session stopRunning];
     });
 }
-- (void)setVideoFrameDuration {
+- (void)setVideoFrameDuration
+{
     dispatch_async(_queue, ^{
         NSError *error;
         AVCaptureDevice *videoDevice = [self videoDeviceWitchPosition:self.devicePosition];
-        
-        [videoDevice lockForConfiguration: &error];
+
+        [videoDevice lockForConfiguration:&error];
         [videoDevice setActiveVideoMinFrameDuration:CMTimeMake(1, 15)];
         [videoDevice setActiveVideoMaxFrameDuration:CMTimeMake(1, 15)];
         [videoDevice unlockForConfiguration];
     });
 }
-- (void)setVideoOutputFormatType {
+- (void)setVideoOutputFormatType
+{
     dispatch_async(_queue, ^{
         NSDictionary *settings = [NSDictionary dictionaryWithObjectsAndKeys:
-                                  [NSNumber numberWithUnsignedInteger:kCVPixelFormatType_420YpCbCr8BiPlanarFullRange],
-                                  kCVPixelBufferPixelFormatTypeKey, nil];
+                                               [NSNumber numberWithUnsignedInteger:kCVPixelFormatType_420YpCbCr8BiPlanarFullRange],
+                                               kCVPixelBufferPixelFormatTypeKey, nil];
         self.videoOutput.videoSettings = settings;
     });
 }
-- (AVCaptureConnection *)getVideoConnection {
+- (AVCaptureConnection *)getVideoConnection
+{
     AVCaptureConnection *videoConnection = nil;
-    for (AVCaptureConnection *connection in [_videoOutput connections])
-    {
-        for (AVCaptureInputPort *port in [connection inputPorts])
-        {
-            if ([[port mediaType] isEqual:AVMediaTypeVideo])
-            {
+    for (AVCaptureConnection *connection in [_videoOutput connections]) {
+        for (AVCaptureInputPort *port in [connection inputPorts]) {
+            if ([[port mediaType] isEqual:AVMediaTypeVideo]) {
                 videoConnection = connection;
             }
         }
     }
     return videoConnection;
 }
-- (void)detectAndSetOrientation  {
-    UIInterfaceOrientation statusBarOrientation = UIApplication.sharedApplication.statusBarOrientation;
-    AVCaptureVideoOrientation captureOrientation = AVCaptureVideoOrientationPortrait;
-    if (statusBarOrientation == UIInterfaceOrientationLandscapeLeft) {
-        captureOrientation = AVCaptureVideoOrientationLandscapeRight;
-    }else if (statusBarOrientation == UIInterfaceOrientationLandscapeRight) {
-        captureOrientation = AVCaptureVideoOrientationLandscapeLeft;
-    }else {
-        captureOrientation = AVCaptureVideoOrientationPortrait;
-    }
-    [self setVideoOrientation:captureOrientation];
+- (void)detectAndSetOrientation
+{
+//    UIInterfaceOrientation statusBarOrientation = UIApplication.sharedApplication.statusBarOrientation;
+//    AVCaptureVideoOrientation captureOrientation = AVCaptureVideoOrientationPortrait;
+//    if (statusBarOrientation == UIInterfaceOrientationLandscapeLeft) {
+//        captureOrientation = AVCaptureVideoOrientationLandscapeRight;
+//    } else if (statusBarOrientation == UIInterfaceOrientationLandscapeRight) {
+//        captureOrientation = AVCaptureVideoOrientationLandscapeLeft;
+//    } else {
+//        captureOrientation = AVCaptureVideoOrientationPortrait;
+//    }
+//    [self setVideoOrientation:captureOrientation];
 }
 #pragma mark - public functions
 //切换前后摄像头
@@ -147,7 +154,7 @@
         NSError *error = nil;
         if (self.devicePosition == AVCaptureDevicePositionFront) {
             self.devicePosition = AVCaptureDevicePositionBack;
-        }else {
+        } else {
             self.devicePosition = AVCaptureDevicePositionFront;
         }
         AVCaptureDevice *videoDevice = [self videoDeviceWitchPosition:self.devicePosition];
@@ -166,7 +173,7 @@
             [self.session addInput:self.videoInput];
         }
         [self.session commitConfiguration];
-        
+
         //获取videoConnection
         self.videoConnection = [self getVideoConnection];
     });
@@ -223,7 +230,7 @@
     dispatch_async(_queue, ^{
         NSError *error;
         AVCaptureDevice *videoDevice = self.videoInput.device;
-        
+
         [videoDevice lockForConfiguration:&error];
         if ([videoDevice isExposurePointOfInterestSupported]) {
             videoDevice.exposurePointOfInterest = point;
@@ -236,11 +243,15 @@
 - (AVCaptureDevice *)videoDeviceWitchPosition:(AVCaptureDevicePosition)position
 {
     AVCaptureDevice *videoDevice;
-    
+
     if (@available(iOS 11.1, *)) {
-        NSArray<AVCaptureDeviceType> *deviceTypes = @[AVCaptureDeviceTypeBuiltInWideAngleCamera,
-                                                      AVCaptureDeviceTypeBuiltInDualCamera,
-                                                      AVCaptureDeviceTypeBuiltInTrueDepthCamera];
+        NSArray<AVCaptureDeviceType> *deviceTypes = @[
+            AVCaptureDeviceTypeBuiltInWideAngleCamera,
+#if TARGET_OS_IOS
+            AVCaptureDeviceTypeBuiltInDualCamera,
+            AVCaptureDeviceTypeBuiltInTrueDepthCamera
+#endif
+        ];
         AVCaptureDeviceDiscoverySession *session = [AVCaptureDeviceDiscoverySession discoverySessionWithDeviceTypes:deviceTypes
                                                                                                           mediaType:AVMediaTypeVideo
                                                                                                            position:position];
@@ -263,27 +274,28 @@
             }
         }
     }
-    
+
     return videoDevice;
 }
-- (BOOL)canDeviceOpenCamera {
+- (BOOL)canDeviceOpenCamera
+{
     //判断应用是否有使用麦克风的权限
-    NSString *mediaType = AVMediaTypeVideo;//读取媒体类型
-    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType];//读取设备授权状态
+    NSString *mediaType = AVMediaTypeVideo; //读取媒体类型
+    AVAuthorizationStatus authStatus = [AVCaptureDevice authorizationStatusForMediaType:mediaType]; //读取设备授权状态
     BOOL result = NO;
     switch (authStatus) {
-        case AVAuthorizationStatusRestricted:
-            result = NO;
-            break;
-        case AVAuthorizationStatusDenied:
-            result = NO;
-            break;
-        case AVAuthorizationStatusAuthorized:
-            result = YES;
-            break;
-        default:
-            result = NO;
-            break;
+    case AVAuthorizationStatusRestricted:
+        result = NO;
+        break;
+    case AVAuthorizationStatusDenied:
+        result = NO;
+        break;
+    case AVAuthorizationStatusAuthorized:
+        result = YES;
+        break;
+    default:
+        result = NO;
+        break;
     }
     return result;
 }
@@ -295,51 +307,54 @@
         return;
     }
     dispatch_suspend(_queue);
-    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo completionHandler:^(BOOL granted) {
-        if (granted == NO) {
-            completeBlock(-1, @"用户拒绝使用摄像头");
-        }else {
-            completeBlock(0, @"可以使用摄像头");
-        }
-        dispatch_resume(self->_queue);
-    }];
+    [AVCaptureDevice requestAccessForMediaType:AVMediaTypeVideo
+                             completionHandler:^(BOOL granted) {
+                                 if (granted == NO) {
+                                     completeBlock(-1, @"用户拒绝使用摄像头");
+                                 } else {
+                                     completeBlock(0, @"可以使用摄像头");
+                                 }
+                                 dispatch_resume(self->_queue);
+                             }];
 }
 
 #pragma mark - AVCaptureVideoDataOutputSampleBufferDelegate
 
-- (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection {
+- (void)captureOutput:(AVCaptureOutput *)output didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer fromConnection:(AVCaptureConnection *)connection
+{
     [self sampleBufferToYUV:sampleBuffer];
 }
 - (void)sampleBufferToYUV:(CMSampleBufferRef)sampleBuffer
 {
     CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer);
-    
+
     CVPixelBufferLockBaseAddress(pixelBuffer, 0);
-    
+
     int pixelWidth = (int)CVPixelBufferGetWidth(pixelBuffer);
     int pixelHeight = (int)CVPixelBufferGetHeight(pixelBuffer);
     int yuv_size = pixelHeight * pixelWidth * 1.5;
     int uv_size = pixelHeight * pixelWidth * 0.5;
-    
+
     int stride_y = (int)CVPixelBufferGetBytesPerRowOfPlane(pixelBuffer, 0);
     int stride_uv = (int)CVPixelBufferGetBytesPerRowOfPlane(pixelBuffer, 1);
-    
+
     uint8_t *base_y = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 0);
     uint8_t *base_uv = CVPixelBufferGetBaseAddressOfPlane(pixelBuffer, 1);
-    
+
     uint8_t *dest_y = malloc(yuv_size);
     uint8_t *dest_u = dest_y + pixelWidth * pixelHeight;
     uint8_t *dest_v = dest_u + pixelWidth * pixelHeight / 4;
-    
-    int result = NV12ToI420(base_y, stride_y, base_uv, stride_uv, dest_y, pixelWidth, dest_u, pixelWidth/2, dest_v, pixelWidth/2, pixelWidth, pixelHeight);
-    
+
+    int result = NV12ToI420(base_y, stride_y, base_uv, stride_uv, dest_y, pixelWidth, dest_u, pixelWidth / 2, dest_v, pixelWidth / 2, pixelWidth, pixelHeight);
+
     CVPixelBufferUnlockBaseAddress(pixelBuffer, 0);
-    
+
     //回调数据
     [self processYUVData:dest_y width:pixelWidth height:pixelHeight];
     free(dest_y);
 }
-- (void)processYUVData:(void *)data width:(int)width height:(int)height {
+- (void)processYUVData:(void *)data width:(int)width height:(int)height
+{
     if ([self.delegate respondsToSelector:@selector(didReceivedVideoData:data:width:height:)]) {
         [self.delegate didReceivedVideoData:self data:data width:width height:height];
     }

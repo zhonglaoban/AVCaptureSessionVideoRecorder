@@ -39,8 +39,8 @@ typedef enum {
 
 @property (nonatomic, strong) EAGLContext *glContext;
 @property (nonatomic, strong) CAEAGLLayer *eaglLayer;
-@property (nonatomic, strong) GLKTextureInfo *woodTexture;
 @property (nonatomic, strong) ZFShader *shader;
+
 @property (nonatomic, assign) GLint framebufferWidth;
 @property (nonatomic, assign) GLint framebufferHeight;
 @property (nonatomic, assign) GLuint texture_y;
@@ -57,7 +57,7 @@ typedef enum {
 @property (nonatomic, assign) int viewHeight;
 @property (nonatomic, assign) float viewScale;
 
-@property (nonatomic, assign) BOOL shouldRender;
+@property (nonatomic, assign) BOOL readyToRender;
 
 @end
 
@@ -77,7 +77,7 @@ typedef enum {
         [self setupOpenGL];
         [self setupTexture];
         [self setupVAO];
-        _shouldRender = [self setupRender];
+        _readyToRender = [self setupRender];
     }
     return self;
 }
@@ -92,7 +92,7 @@ typedef enum {
         [self setupOpenGL];
         [self setupTexture];
         [self setupVAO];
-        _shouldRender = [self setupRender];
+        _readyToRender = [self setupRender];
     }
     return self;
 }
@@ -109,14 +109,16 @@ typedef enum {
 - (void)layoutSubviews {
     [super layoutSubviews];
     BOOL needRerender = self.bounds.size.width != _viewWidth || self.bounds.size.height != _viewHeight;
-    if (needRerender && !_shouldRender) {
+    if (needRerender) {
         _viewWidth = self.bounds.size.width;
         _viewHeight = self.bounds.size.height;
-        glDeleteFramebuffers(1, &_frameBuffer);
-        glDeleteRenderbuffers(1, &_colorBuffer);
-        _shouldRender = [self setupRender];
+        _viewScale = [self scaleFromWidth:_viewWidth height:_viewHeight];
     }
-    _viewScale = [self scaleFromWidth:_viewWidth height:_viewHeight];
+    if (!_readyToRender) {
+        _readyToRender = [_glContext renderbufferStorage:GL_RENDERBUFFER fromDrawable:_eaglLayer];
+        glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_RENDERBUFFER, _colorBuffer);
+    }
+
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_WIDTH, &_framebufferWidth);
     glGetRenderbufferParameteriv(GL_RENDERBUFFER, GL_RENDERBUFFER_HEIGHT, &_framebufferHeight);
 }
@@ -226,7 +228,7 @@ typedef enum {
     return texture;
 }
 - (void)displayYUV420Data:(void *)data width:(int)width height:(int)height {
-    if (!_shouldRender) {
+    if (!_readyToRender) {
         return;
     }
     float dataScale = [self scaleFromWidth:width height:height];
@@ -273,6 +275,10 @@ typedef enum {
     glTexImage2D(GL_TEXTURE_2D, 0, GL_LUMINANCE, width/2, height/2, 0, GL_LUMINANCE, GL_UNSIGNED_BYTE, base_v);
     
     glBindFramebuffer(GL_FRAMEBUFFER, self.frameBuffer);
+    GLenum status = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+    if (GL_FRAMEBUFFER_COMPLETE != status) {
+        printf("gl check framebuffer status: %d \n", status);
+    }
     glViewport(0, 0, self.framebufferWidth, self.framebufferHeight);
     glClearColor(0.1, 0.1, 0.1, 1);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -283,7 +289,9 @@ typedef enum {
     
     glBindBuffer(GL_ARRAY_BUFFER, _videoVBO);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
+    
+    glCheckError();
+    
     //draw rectangle
     glDrawArrays(GL_TRIANGLE_FAN, 0, 4);
     
